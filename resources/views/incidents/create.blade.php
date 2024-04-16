@@ -10,14 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <!-- Message de réussite -->
+                    {{-- <!-- Message de réussite -->
                     @if (session()->has('message'))
                         <div class="mt-3 mb-4 list-disc list-inside text-sm text-green-600">
                             {{ session('message') }}
                         </div>
-                    @endif
+                    @endif --}}
                     
-                    <form action="{{ route('incidents.create') }}" method="POST">
+                    <form method="POST" action="{{ route('incidents.store') }}">
                         @csrf
                         <div class="grid gap-6">
                             <div>
@@ -39,31 +39,12 @@
                                                 :value="old('bank_name')" required autofocus 
                                                 class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
                                                 <option selected disabled>Sélectionnez une banque</option>
-                                                <option value="Afriland First Bank">Afriland First Bank</option>
-                                                <option value="Banque Atlantique">Banque Atlantique</option>
-                                                <option value="BICEC">BICEC</option>
-                                                <option value="Citibank NA Cameroun">Citibank NA Cameroun</option>
-                                                <option value="Commercial Bank of Cameroon">Commercial Bank of Cameroon
-                                                </option>
-                                                <option value="Crédit Agricole SCB Cameroun">Crédit Agricole SCB
-                                                    Cameroun</option>
-                                                <option value="Ecobank Cameroun SA">Ecobank Cameroun SA</option>
-                                                <option value="National Financial Credit">National Financial Credit
-                                                </option>
-                                                <option value="Standard Chartered Bank Cameroun">Standard Chartered Bank
-                                                    Cameroun</option>
-                                                <option value="Société Générale des Banques du Cameroun">Société
-                                                    Générale des Banques du Cameroun</option>
-                                                <option value="Union Bank of Cameroon">Union Bank of Cameroon</option>
-                                                <option value="United Bank For Africa">United Bank For Africa</option>
-
-                                                <x-input-error :messages="$errors->get('bank_name')" class="mt-2" />
-
-                                                {{-- @foreach ($banks as $bank_name)
+                                                @foreach ($banks as $bank_name)
                                                     <option value="{{ $bank_name->value }}" @selected(old('bank_name',) === $bank_name->value)>
                                                         {{ $bank_name }}
                                                     </option>    
-                                                @endforeach --}}
+                                                @endforeach
+                                                <x-input-error :messages="$errors->get('bank_name')" class="mt-2" />
 
 
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -169,7 +150,7 @@
                                             </div>
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {{-- <div class="flex flex-col space-y-1.5">
+                                            <div class="flex flex-col space-y-1.5">
                                                 <x-input-label
                                                     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                                                     Matricule du client :
@@ -177,7 +158,7 @@
                                                 <input
                                                     name="customer_number" id="customer_number" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                                     placeholder="Matricule du client" />
-                                            </div> --}}
+                                            </div>
                                             <div class="flex flex-col space-y-1.5">
                                                 <x-input-label
                                                     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">

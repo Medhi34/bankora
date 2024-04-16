@@ -30,7 +30,7 @@ class Incident extends Model
         'transaction_number',
         'transaction_amount',
         'transaction_date',
-        'transaction_recipient'
+        'transaction_recipient',
     ];
 
     protected $casts = [
@@ -40,8 +40,8 @@ class Incident extends Model
         'agency_name' => 'string',
         'agency_id' => 'string',
 
-        // 'bank_name' => BankEnum::class,
-        'bank_name' => 'string',
+        'bank_name' => BankEnum::class,
+        // 'bank_name' => 'string',
         'bank_id' => 'string',
 
         'transaction_date' => 'date',

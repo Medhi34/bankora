@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+namespace App\Models;
+
+use App\Enums\BankEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,8 +27,8 @@ return new class extends Migration
             $table->string('account_key');
             $table->float('account_balance');
 
-            // $table->string('bank_name')->default(\App\Enums\BankEnum::BANK_1->value);
             $table->string('bank_name');
+            // $table->string('bank_name')->default(BankEnum::BANK_1->value);
             $table->string('bank_id')->unique();
 
             $table->string('agency_name');

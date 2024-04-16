@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Incident;
-use Illuminate\View\View;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class IncidentController extends Controller
 {
@@ -17,7 +15,7 @@ class IncidentController extends Controller
     public function index()
     {
         $incidents = Incident::all();
-    
+
         return view('incidents.index', compact('incidents'));
     }
 
@@ -34,7 +32,7 @@ class IncidentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request -> validate([
+        $data = $request->validate([
             'account_name' => 'required|max:50',
             'account_number' => 'required|max:11',
             'account_address' => 'required|max:50',
@@ -57,29 +55,28 @@ class IncidentController extends Controller
 
         $incident = new Incident;
 
+        $incident->account_name = $request->account_name;
+        $incident->account_number = $request->account_number;
+        $incident->account_address = $request->account_address;
+        $incident->customer_number = $request->customer_number;
+        $incident->account_phone = $request->account_phone;
+        $incident->account_key = $request->account_key;
+        $incident->account_balance = $request->account_balance;
 
-        $incident -> account_name = $request -> account_name;
-        $incident -> account_number = $request -> account_number;
-        $incident -> account_address = $request -> account_address;
-        $incident -> customer_number = $request -> customer_number;
-        $incident -> account_phone = $request -> account_phone;
-        $incident -> account_key = $request -> account_key;
-        $incident -> account_balance = $request -> account_balance;
+        $incident->agency_name = $request->agency_name;
+        $incident->agency_id = $request->agency_id;
 
-        $incident -> agency_name = $request -> agency_name;
-        $incident -> agency_id = $request -> agency_id;
+        $incident->bank_name = $request->bank_name;
+        $incident->bank_id = $request->bank_id;
 
-        $incident -> bank_name = $request -> bank_name;
-        $incident -> bank_id = $request -> bank_id;
+        $incident->transaction_number = $request->transaction_number;
+        $incident->transaction_amount = $request->transaction_amount;
+        $incident->transaction_date = $request->transaction_date;
+        $incident->transaction_recipient = $request->transaction_recipient;
 
-        $incident -> transaction_number = $request -> transaction_number;
-        $incident -> transaction_amount = $request -> transaction_amount;
-        $incident -> transaction_date = $request -> transaction_date;
-        $incident -> transaction_recipient = $request -> transaction_recipient;
+        $incident->save();
 
-        $incident -> save();
-
-        return back()->with('message', "Incident bancaire créé avec succès !");
+        return back()->with('message', 'Incident bancaire créé avec succès !');
     }
 
     /**
@@ -93,7 +90,7 @@ class IncidentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Incident $incident)
     {
         return view('incidents.update', compact('incident'));
     }
@@ -103,7 +100,7 @@ class IncidentController extends Controller
      */
     public function update(Request $request, Incident $incident)
     {
-        $data = $request -> validate([
+        $data = $request->validate([
             'account_name' => 'required|max:50',
             'account_number' => 'required|max:11',
             'account_address' => 'required|max:50',
@@ -124,28 +121,28 @@ class IncidentController extends Controller
             'transaction_recipient' => 'required|max:50',
         ]);
 
-        $incident -> account_name = $request -> account_name;
-        $incident -> account_number = $request -> account_number;
-        $incident -> account_address = $request -> account_address;
-        $incident -> customer_number = $request -> customer_number;
-        $incident -> account_phone = $request -> account_phone;
-        $incident -> account_key = $request -> account_key;
-        $incident -> account_balance = $request -> account_balance;
+        $incident->account_name = $request->account_name;
+        $incident->account_number = $request->account_number;
+        $incident->account_address = $request->account_address;
+        $incident->customer_number = $request->customer_number;
+        $incident->account_phone = $request->account_phone;
+        $incident->account_key = $request->account_key;
+        $incident->account_balance = $request->account_balance;
 
-        $incident -> agency_name = $request -> agency_name;
-        $incident -> agency_id = $request -> agency_id;
+        $incident->agency_name = $request->agency_name;
+        $incident->agency_id = $request->agency_id;
 
-        $incident -> bank_name = $request -> bank_name;
-        $incident -> bank_id = $request -> bank_id;
+        $incident->bank_name = $request->bank_name;
+        $incident->bank_id = $request->bank_id;
 
-        $incident -> transaction_number = $request -> transaction_number;
-        $incident -> transaction_amount = $request -> transaction_amount;
-        $incident -> transaction_date = $request -> transaction_date;
-        $incident -> transaction_recipient = $request -> transaction_recipient;
+        $incident->transaction_number = $request->transaction_number;
+        $incident->transaction_amount = $request->transaction_amount;
+        $incident->transaction_date = $request->transaction_date;
+        $incident->transaction_recipient = $request->transaction_recipient;
 
-        $incident -> save();
+        $incident->save();
 
-        return back()->with('message', "Incident bancaire modifié avec succès !");
+        return back()->with('message', 'Incident bancaire modifié avec succès !');
     }
 
     /**
@@ -155,7 +152,6 @@ class IncidentController extends Controller
     {
         $incident->delete();
     }
-
 
     public function __invoke(Incident $incident)
     {

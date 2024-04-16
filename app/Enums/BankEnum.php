@@ -6,8 +6,8 @@ namespace App\Enums;
 
 enum BankEnum: string
 {
-    case BANK_1 = 'AFRILAND FIRST BANK';
-    case BANK_2 = 'BANQUE ATLANTIQUE  ';
+    case BANK_1 = 'Afriland First Bank';
+    case BANK_2 = 'Banque Atlantique';
     case BANK_3 = 'BICEC';
     case BANK_4 = 'Citibank NA Cameroun';
     case BANK_5 = 'Commercial Bank of Cameroon';
@@ -18,5 +18,5 @@ enum BankEnum: string
     case BANK_10 = 'Société Générale des Banques du Cameroun';
     case BANK_11 = 'Union Bank of Cameroon';
     case BANK_12 = 'United Bank For Africa';
-                                                
+
 }
