@@ -1,3 +1,6 @@
+<head>
+    <link rel="shortcut icon" href="{{ asset('images/logo-beac.jpeg') }}" type="image/x-icon" />
+</head>
 <x-guest-layout>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf

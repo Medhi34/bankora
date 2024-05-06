@@ -10,12 +10,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    {{-- <!-- Message de réussite -->
+                    <!-- Message de réussite -->
                     @if (session()->has('message'))
                         <div class="mt-3 mb-4 list-disc list-inside text-sm text-green-600">
                             {{ session('message') }}
                         </div>
-                    @endif --}}
+                    @endif
                     
                     <form method="POST" action="{{ route('incidents.store') }}">
                         @csrf

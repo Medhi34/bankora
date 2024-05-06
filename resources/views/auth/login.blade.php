@@ -1,3 +1,6 @@
+<head>
+    <link rel="shortcut icon" href="{{ asset('images/logo-beac.jpeg') }}" type="image/x-icon" />
+</head>
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
