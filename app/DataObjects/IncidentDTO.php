@@ -25,7 +25,7 @@ class IncidentDTO
         private readonly float $transaction_amount,
         private readonly date $transaction_date,
         private readonly string $transaction_recipient,
-        
+
     ) {
     }
 

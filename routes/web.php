@@ -40,10 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::prefix('incidents')
         ->as('incidents.')
         ->group(static function (): void {
-            Route::get('/create', CreateController::class)->name('create');
-            Route::post('/', StoreController::class)->name('store');
-            Route::get('/index', IndexController::class)->name('index');
-            Route::get('/search', SearchController::class)->name('search');
+            Route::get('/create', [CreateController::class, 'create'])->name('create');
+            Route::post('/store', [StoreController::class, 'store'])->name('store');
+            Route::get('/index', [IndexController::class, 'index'])->name('index');
+            Route::get('/search', [SearchController::class, 'search'])->name('search');
         });
 });
 

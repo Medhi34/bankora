@@ -6,22 +6,24 @@ namespace App\Http\Controllers\Incident;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Incident\StoreRequest;
-use App\DataObjects\IncidentDTO;
 use App\Models\Incident;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 
 class StoreController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request) : void
+    public function store(StoreRequest $request)
     {
-        dd(
-            // Incident::create($request->validated());
-            $request->all()
-        );
-        
+        $validatedData = $request->validated();
+        $incident = Incident::create($validatedData);
+
+        return response()->json(['message' => 'Incident enregistré avec succès!', 'data' => $incident]);
+
+        // dd(
+        //     $request->all()
+        // );
+
     }
 }

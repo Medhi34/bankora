@@ -26,6 +26,8 @@
         <p>{{ $incident->account_key }}</p>
         <h3 class="font-semibold text-xl text-gray-800">@lang('Solde du compte')</h3>
         <p>{{ $incident->account_balance }}</p>
+        <h3 class="font-semibold text-xl text-gray-800">@lang('Matricule du client')</h3>
+        <p>{{ $incident->customer_number }}</p>
         <h3 class="font-semibold text-xl text-gray-800">@lang('Adresse')</h3>
         <p>{{ $incident->account_address }}</p>
         <h3 class="font-semibold text-xl text-gray-800">@lang('Téléphone')</h3>
