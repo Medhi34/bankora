@@ -32,25 +32,25 @@ class IncidentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'account_name' => 'required|max:50',
-            'account_number' => 'required|max:11',
-            'account_address' => 'required|max:50',
-            'customer_number' => 'required|max:50',
-            'account_phone' => 'required|max:9',
-            'account_key' => 'required|max:2',
-            'account_balance' => 'required|max:15',
+        $request->validate([
+            'account_name' => 'required|min:5|max:50',
+            'account_number' => 'required|size:11',
+            'account_address' => 'required|min:5|max:50',
+            'customer_number' => 'required|size:10',
+            'account_phone' => 'required|size:9',
+            'account_key' => 'required|size:2',
+            'account_balance' => 'required|min:1|max:15',
 
-            'agency_name' => 'required|max:20',
-            'agency_id' => 'required|max:2',
+            'agency_name' => 'required|min:5|max:30',
+            'agency_id' => 'required|size:5',
 
-            'bank_name' => 'required|max:30',
-            'bank_id' => 'required|max:2',
+            'bank_name' => 'required',
+            'bank_id' => 'required|size:5',
 
-            'transaction_number' => 'required|max:7',
-            'transaction_amount' => 'required|max:15',
-            'transaction_date' => 'required',
-            'transaction_recipient' => 'required|max:50',
+            'transaction_number' => 'required|size:7',
+            'transaction_amount' => 'required|min:1|max:15',
+            'transaction_date' => 'required|date_format:d-m-Y',
+            'transaction_recipient' => 'required|min:5|max:50',
         ]);
 
         $incident = new Incident;
@@ -76,7 +76,10 @@ class IncidentController extends Controller
 
         $incident->save();
 
-        return back()->with('message', 'Incident bancaire créé avec succès !');
+        // return back()->with('message', 'Incident bancaire créé avec succès !');
+        return redirect()
+            ->route('incidents.index')
+            ->with('message','Incident has been created successfully.');
     }
 
     /**
@@ -100,25 +103,25 @@ class IncidentController extends Controller
      */
     public function update(Request $request, Incident $incident)
     {
-        $data = $request->validate([
-            'account_name' => 'required|max:50',
-            'account_number' => 'required|max:11',
-            'account_address' => 'required|max:50',
-            'customer_number' => 'required|max:50',
-            'account_phone' => 'required|max:9',
-            'account_key' => 'required|max:2',
-            'account_balance' => 'required|max:15',
+        $request->validate([
+            'account_name' => 'required|min:5|max:50',
+            'account_number' => 'required|size:11',
+            'account_address' => 'required|min:5|max:50',
+            'customer_number' => 'required|size:10',
+            'account_phone' => 'required|size:9',
+            'account_key' => 'required|size:2',
+            'account_balance' => 'required|min:1|max:15',
 
-            'agency_name' => 'required|max:20',
-            'agency_id' => 'required|max:2',
+            'agency_name' => 'required|min:5|max:30',
+            'agency_id' => 'required|size:5',
 
-            'bank_name' => 'required|max:30',
-            'bank_id' => 'required|max:2',
+            'bank_name' => 'required',
+            'bank_id' => 'required|size:5',
 
-            'transaction_number' => 'required|max:7',
-            'transaction_amount' => 'required|max:15',
-            'transaction_date' => 'required',
-            'transaction_recipient' => 'required|max:50',
+            'transaction_number' => 'required|size:7',
+            'transaction_amount' => 'required|min:1|max:15',
+            'transaction_date' => 'required|date_format:d-m-Y',
+            'transaction_recipient' => 'required|min:5|max:50',
         ]);
 
         $incident->account_name = $request->account_name;

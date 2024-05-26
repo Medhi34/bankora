@@ -8,6 +8,7 @@ use App\Enums\BankEnum;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Incident;
 
 class CreateController extends Controller
 {

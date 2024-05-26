@@ -12,7 +12,7 @@ class SearchController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function search(Request $request)
+    public function search(Request $request): View
     {
         return view('incidents.search');
     }
