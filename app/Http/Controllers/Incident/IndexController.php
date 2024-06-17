@@ -13,10 +13,10 @@ class IndexController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
         $incidents = Incident::all();
-        return view('incidents.index', ['incidents' => $incidents]);
-        // return view('incidents.index', compact('incidents'));
+        // return view('incidents.index', ['incidents' => $incidents]);
+        return view('incidents.index', compact('incidents'));
     }
 }
