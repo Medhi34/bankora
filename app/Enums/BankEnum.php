@@ -15,7 +15,7 @@ enum BankEnum: string
     case BANK_7 = 'Ecobank Cameroun SA';
     case BANK_8 = 'National Financial Credit';
     case BANK_9 = 'Standard Chartered Bank Cameroun';
-    case BANK_10 = 'Société Générale des Banques du Cameroun';
+    case BANK_10 = 'Société Générale Cameroun';
     case BANK_11 = 'Union Bank of Cameroon';
     case BANK_12 = 'United Bank For Africa';
 

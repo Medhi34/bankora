@@ -6,6 +6,7 @@ use App\Http\Controllers\Incident\CreateController;
 use App\Http\Controllers\Incident\IndexController;
 use App\Http\Controllers\Incident\SearchController;
 use App\Http\Controllers\Incident\StoreController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
